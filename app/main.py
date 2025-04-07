@@ -18,13 +18,11 @@ def create_person_list(people: list) -> list:
     person_list = [Person(d["name"], d["age"]) for d in people]
 
     for person_dict in people:
-        name = person_dict["name"]
-        person = Person.people[name]
+        person = Person.people[person_dict["name"]]
 
-        if person_dict.get("wife"):
-            person.wife = Person.people[person_dict["wife"]]
-
-        if person_dict.get("husband"):
-            person.husband = Person.people[person_dict["husband"]]
+        for role in ("wife", "husband"):
+            partner_name = person_dict.get(role)
+            if partner_name:
+                setattr(person, role, Person.people[partner_name])
 
     return person_list
