@@ -14,13 +14,8 @@ def create_person_list(people: list) -> list:
     Якщо у словнику вказано "wife" або "husband",
     створює відповідне посилання між об"єктами.
     """
-    person_list = []
 
-    for person_dict in people:
-        name = person_dict["name"]
-        age = person_dict["age"]
-        person = Person(name, age)
-        person_list.append(person)
+    person_list = [Person(d["name"], d["age"]) for d in people]
 
     for person_dict in people:
         name = person_dict["name"]
