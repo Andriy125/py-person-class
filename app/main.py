@@ -26,10 +26,10 @@ def create_person_list(people: list) -> list:
         name = person_dict["name"]
         person = Person.people[name]
 
-        if person_dict.get("wife") is not None:
+        if person_dict.get("wife"):
             person.wife = Person.people[person_dict["wife"]]
 
-        if person_dict.get("husband") is not None:
+        if person_dict.get("husband"):
             person.husband = Person.people[person_dict["husband"]]
 
     return person_list
